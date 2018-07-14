@@ -1,5 +1,5 @@
 #!/usr/bin/env
-
+import json
 # This is the program that is used to manage my video data locally
 # potentially this could also be used to manage all other files
 # Expected Functions include:
@@ -13,6 +13,11 @@
 #       sometimes a manual process); for files with same name, keep file that is
 #       larger (assumed to be higher quality)
 # 
+def config():
+    configs = None
+    with open("./config/config.json", "r") as conf:
+        configs = json.load(conf)
+    return configs
 
 def main():
     pass
