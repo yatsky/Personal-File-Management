@@ -23,12 +23,14 @@ class Reporter():
         """
         for root, dirs, filenames in walk(self.root):
             for filename in filenames:
-                self.index["filename"].append(filename)
+                # TODO Need to deal with file names that have comma in them
+                self.index["filename"].append(filename.replace(",",""))
                 file_path = path.join(root, filename)
                 self.index["path"].append(file_path)
                 self.index["size"].append(path.getsize(file_path))
                 self.index["create_date"].append(path.getmtime(file_path))
         with open("index.csv", encoding="utf-8", mode="w+") as index:
+            index.write("filename,path,size,create_date\n")
             for i in range(len(self.index["filename"])):
                 try:
                     index.write("{},{},{},{}\n".format(self.index["filename"][i],self.index["path"][i], 
