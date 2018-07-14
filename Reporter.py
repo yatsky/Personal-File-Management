@@ -1,4 +1,4 @@
-#!/usr/bin/env
+#!/usr/bin/env python
 
 from os import path, rmdir, remove, walk
 class Reporter():
@@ -28,9 +28,13 @@ class Reporter():
                 self.index["path"].append(file_path)
                 self.index["size"].append(path.getsize(file_path))
                 self.index["create_date"].append(path.getmtime(file_path))
-        with open("index.csv", "w") as index:
+        with open("index.csv", encoding="utf-8", mode="w+") as index:
             for i in range(len(self.index["filename"])):
-                index.write("{},{},{},{}\n".format(self.index["filename"][i],self.index["path"][i], 
-                self.index["size"][i], self.index["create_date"][i]))
+                try:
+                    index.write("{},{},{},{}\n".format(self.index["filename"][i],self.index["path"][i], 
+                    self.index["size"][i], self.index["create_date"][i]))
+                except UnicodeEncodeError:
+                    print(self.index["path"][i])
+                    continue 
             
         
