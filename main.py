@@ -1,5 +1,6 @@
 #!/usr/bin/env
 import json
+from Reporter import Reporter
 # This is the program that is used to manage my video data locally
 # potentially this could also be used to manage all other files
 # Expected Functions include:
@@ -13,6 +14,8 @@ import json
 #       sometimes a manual process); for files with same name, keep file that is
 #       larger (assumed to be higher quality)
 # 
+
+
 def config():
     configs = None
     with open("./config/config.json", "r") as conf:
@@ -20,7 +23,8 @@ def config():
     return configs
 
 def main():
-    pass
+    reporter = Reporter(config())
+    reporter.create_index()
 
 if __name__ == "__main__":
     main()
