@@ -1,6 +1,9 @@
 #!/usr/bin/env python
 
 from os import path, rmdir, remove, walk
+import re
+
+
 class Reporter():
     def __init__(self, configs):
         """
@@ -38,5 +41,8 @@ class Reporter():
                 except UnicodeEncodeError:
                     print(self.index["path"][i])
                     continue 
-            
-        
+    @staticmethod
+    def _clean_filename(filename):
+       pattern = re.compile("[^\w\n\s]")
+       newname = re.sub(pattern, "_", filename)
+       return newname
