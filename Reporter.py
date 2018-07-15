@@ -26,6 +26,11 @@ class Reporter():
         path
         """
         for root, dirs, filenames in walk(self.root):
+            # rename directories
+            for dir in dirs:
+                newname = self._clean_filename(dir)
+                self._rename_file(newname, dir, root)
+
             for filename in filenames:
                 # TODO Need to deal with file names that have comma in them
                 newname = self._clean_filename(filename)
