@@ -11,6 +11,7 @@ class Reporter():
         """
         self.root = configs["root_path"]
         self.video_types = configs["video_types"]
+        self.save_file_path = configs["save_file_path"]
         self.index = {
             "filename":[],
             "path":[],
@@ -34,7 +35,7 @@ class Reporter():
                 self.index["path"].append(file_path)
                 self.index["size"].append(path.getsize(file_path))
                 self.index["create_date"].append(path.getmtime(file_path))
-        with open("index.csv", encoding="utf-8", mode="w+") as index:
+        with open(self.save_file_path, encoding="utf-8", mode="w+") as index:
             index.write("filename,path,size,create_date\n")
             for i in range(len(self.index["filename"])):
                 try:
