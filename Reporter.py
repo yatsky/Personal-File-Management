@@ -32,7 +32,6 @@ class Reporter():
                 self._rename_file(newname, dir, root)
 
             for filename in filenames:
-                # TODO Need to deal with file names that have comma in them
                 newname = self._clean_filename(filename)
                 self._rename_file(newname,filename,root)
                 self.index["filename"].append(newname)

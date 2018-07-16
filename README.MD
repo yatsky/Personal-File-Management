@@ -3,6 +3,7 @@
  This is the program that is used to manage my video data locally
  potentially this could also be used to manage all other files
  Expected Functions include:
+   0. Clean up file and directory names
    1. Detecting files that have the same size in bytes
    2. Detecting files with the same name (exact match except for the extension)
    3. Listing all files found in 1 and 2 and store them in a csv file with an 
